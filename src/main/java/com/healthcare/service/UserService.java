@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface UserService {
 
-    ResponseEntity<?> createHealthFacilityAdmin(User user);
+    ResponseEntity<?> createNewUser(User user);
 
     ResponseEntity<?> login(User user);
 

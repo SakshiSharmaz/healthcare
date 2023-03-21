@@ -18,4 +18,19 @@ public class UserDto {
     String phone;
 
 
+
+    String healthFacilityName;
+
+    UUID healthFacilityUUid ;
+    String userType;
+
+
+    public UserDto(UUID uuid, String firstName, String lastName, String email, String phone, String userType) {
+        this.uuid = uuid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.phone = phone;
+        this.userType = userType;
+    }
 }

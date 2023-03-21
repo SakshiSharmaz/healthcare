@@ -33,18 +33,18 @@ public class UserController {
             @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
     public ResponseEntity<?> createHealthFacilityAdmin(@RequestBody User user) {
 
-        return userService.createHealthFacilityAdmin(user);
+        return userService.createNewUser(user);
 
     }
 
 
-    @PostMapping("/list/{userType}")
+    @GetMapping("/list/{userType}")
     @Operation(summary = "Get list of specific Type of user")
     @Transactional
     @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
             @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
             @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
-    public ResponseEntity<?> getUserListByTypeAndHealthFacility(@PathVariable String userType, @RequestParam String healthFacilityId) {
+    public ResponseEntity<?> getUserListByTypeAndHealthFacility(@PathVariable String userType,  @RequestParam(required = false) String healthFacilityId) {
 
         return userService.getUserList( userType, healthFacilityId);
 
