@@ -10,4 +10,6 @@ public interface UserService {
     ResponseEntity<?> login(User user);
 
     ResponseEntity<?> getUserList(String userType, String healthFacilityId);
+
+    ResponseEntity<?> deleteUser(String userId);
 }

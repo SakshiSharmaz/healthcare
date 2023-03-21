@@ -109,4 +109,10 @@ public class UserServiceImpl implements UserService {
         } else
             return ResponseEntity.ok(repository.findByUserTypeAndHealthFacilityId(userType, UUID.fromString(healthFacilityId)));
     }
+
+    @Override
+    public ResponseEntity<?> deleteUser(String userId) {
+        repository.deleteById(UUID.fromString(userId));
+        return ResponseEntity.ok("Deleted user successfully");
+    }
 }

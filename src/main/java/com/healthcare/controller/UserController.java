@@ -62,6 +62,18 @@ public class UserController {
 
     }
 
+    @DeleteMapping("/login")
+    @Operation(summary = "delete user ")
+    @Transactional
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
+            @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
+            @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
+    public ResponseEntity<?> deleteUser(@RequestParam String userId) {
+
+        return userService.deleteUser(userId);
+
+    }
+
 
 
 
