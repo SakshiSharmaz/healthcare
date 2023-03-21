@@ -9,4 +9,6 @@ public interface FacilityService {
     ResponseEntity<?> createHealthFacility(HealthFacility facility);
 
     ResponseEntity<?> searchHealthFacility(Long pincode, String state, String district);
+
+    ResponseEntity<?> getHealthFacilityList();
 }

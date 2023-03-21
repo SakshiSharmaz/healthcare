@@ -29,4 +29,10 @@ public class HealthFacilityServiceImpl implements FacilityService {
         return  ResponseEntity.ok(repository.getFacilitiesList(pincode,district,state));
 
     }
+
+    @Override
+    public ResponseEntity<?> getHealthFacilityList() {
+        return  ResponseEntity.ok(repository.getFacilitiesCompleteList());
+
+    }
 }

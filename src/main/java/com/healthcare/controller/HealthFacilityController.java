@@ -50,5 +50,18 @@ public class HealthFacilityController {
 
     }
 
+    @GetMapping("/list")
+    @Operation(summary = "Get list of health Facilities")
+    @Transactional
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
+            @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
+            @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
+    public ResponseEntity<?> getHealthFacilityList( ) {
+
+
+        return service.getHealthFacilityList();
+
+    }
+
 
 }
