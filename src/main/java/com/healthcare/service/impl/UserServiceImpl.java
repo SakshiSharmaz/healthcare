@@ -45,7 +45,7 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<?> login(User user) {
         JSONObject response = new JSONObject();
         HttpHeaders responseHeaders = new HttpHeaders();
-        if(user.getPassword().trim().equals("") || (user.getEmail().trim().equals("") && user.getPhone().trim().equals("")) ){
+        if (user.getPassword().trim().equals("") || (user.getEmail().trim().equals("") && user.getPhone().trim().equals(""))) {
             response.put(ApiConstants.MESSAGE, "Invalid User ID or password");
             return new ResponseEntity<>(response.toString(), responseHeaders, HttpStatus.UNAUTHORIZED);
 
@@ -68,11 +68,12 @@ public class UserServiceImpl implements UserService {
             Authentication authentication = authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(dtUser.getUuid(), user.getPassword()));
 
-
-            String jwt = tokenProvider.generateToken(authentication);
-            responseHeaders.set(ApiConstants.AUTHORIZATION, ApiConstants.BEARER + jwt);
-            response.put(ApiConstants.MESSAGE, ApiConstants.LOGIN_SUCCESSFUL);
-            return new ResponseEntity<>(user, responseHeaders, HttpStatus.OK);
+            if (authentication != null) {
+                String jwt = tokenProvider.generateToken(authentication);
+                responseHeaders.set(ApiConstants.AUTHORIZATION, ApiConstants.BEARER + jwt);
+                response.put(ApiConstants.MESSAGE, ApiConstants.LOGIN_SUCCESSFUL);
+                return new ResponseEntity<>(user, responseHeaders, HttpStatus.OK);
+            }
         }
 
 
