@@ -11,4 +11,8 @@ public interface FacilityService {
     ResponseEntity<?> searchHealthFacility(Long pincode, String state, String district);
 
     ResponseEntity<?> getHealthFacilityList();
+
+    ResponseEntity<?> getDistrictList();
+
+    ResponseEntity<?> getHealthFacilityListWithNoAdmin();
 }

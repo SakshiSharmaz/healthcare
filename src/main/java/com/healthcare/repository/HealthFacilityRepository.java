@@ -20,4 +20,7 @@ public interface HealthFacilityRepository extends JpaRepository<HealthFacility, 
     @Query(value = "select  new com.healthcare.dto.HealthFacilityDto(p.uuid, p.name, p.address, p.latitude, p.longitude, p.staffCount,p.pinCode) from HealthFacility p order by p.name ")
     List<HealthFacilityDto> getFacilitiesCompleteList();
 
+    @Query(value = "select  new com.healthcare.dto.HealthFacilityDto(p.uuid, p.name, p.address, p.latitude, p.longitude, p.staffCount,p.pinCode) from HealthFacility p order by p.name ")
+    List<HealthFacilityDto> getFacilitiesCompleteListNoAdmin();
+
 }

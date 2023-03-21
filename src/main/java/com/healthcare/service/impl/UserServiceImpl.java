@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
             dtUser = repository.findFirstByEmailForTLA(user.getEmail());
             if( dtUser!= null && !dtUser.getUserType().equals("TLA")){
                 Object[] firstByPhone  = repository.findFirstByEmail(user.getEmail()).get(0);
-                dtUser = new UserDto( UUID.fromString((String) firstByPhone[0]), (String) firstByPhone[1], (String) firstByPhone[2],  (String)firstByPhone[3], (String)firstByPhone[4],  (String)firstByPhone[7],UUID.fromString((String) firstByPhone[5]), (String)firstByPhone[6] );
+                dtUser = new UserDto( UUID.fromString((String) firstByPhone[0]), (String) firstByPhone[1], (String) firstByPhone[2],  (String)firstByPhone[3], (String)firstByPhone[4],  (String)firstByPhone[6],UUID.fromString((String) firstByPhone[5]), (String)firstByPhone[7] );
             }
 
         } else {
@@ -78,7 +78,7 @@ public class UserServiceImpl implements UserService {
             dtUser = repository.findFirstByPhoneForTLA(user.getPhone());
             if( dtUser!= null && !dtUser.getUserType().equals("TLA")){
                 Object[] firstByPhone = repository.findFirstByPhone(user.getPhone()).get(0);
-                dtUser = new UserDto( UUID.fromString((String) firstByPhone[0]), (String) firstByPhone[1], (String) firstByPhone[2],  (String)firstByPhone[3], (String)firstByPhone[4],  (String)firstByPhone[7],UUID.fromString((String) firstByPhone[5]), (String)firstByPhone[6] );
+                dtUser = new UserDto( UUID.fromString((String) firstByPhone[0]), (String) firstByPhone[1], (String) firstByPhone[2],  (String)firstByPhone[3], (String)firstByPhone[4],  (String)firstByPhone[6],UUID.fromString((String) firstByPhone[5]), (String)firstByPhone[7] );
 
 
 
