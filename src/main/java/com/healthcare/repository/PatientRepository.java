@@ -19,4 +19,7 @@ public interface PatientRepository extends JpaRepository<Patient, UUID> {
     @Query(value = "select  new com.healthcare.dto.PatientDTO(p.uuid, p.firstName, p.lastName, p.email, p.phone) from Patient p where  p.email=?1")
     List<PatientDTO> findAllByEmail(String email);
 
+
+    @Query(value = "select  new com.healthcare.dto.PatientDTO(p.uuid, p.firstName, p.lastName, p.email, p.phone) from Patient p where  p.healthFacility.uuid=?1")
+    List<PatientDTO> findAllByHealthFacility_Uuid(UUID fromString);
 }

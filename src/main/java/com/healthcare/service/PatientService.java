@@ -15,4 +15,6 @@ public interface PatientService {
     ResponseEntity<?> prescribe(Prescription prescription);
 
 
+    ResponseEntity<?> patientList(String uuid);
+
 }

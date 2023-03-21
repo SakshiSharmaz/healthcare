@@ -55,6 +55,18 @@ public class PatientController {
 
     }
 
+    @GetMapping("/list")
+    @Operation(summary = "Patient list ")
+    @Transactional
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
+            @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
+            @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
+    public ResponseEntity<?> patientList( @RequestParam String healthFacilityId) {
+
+        return service.patientList(healthFacilityId);
+
+    }
+
     @PostMapping("/prescribe")
     @Operation(summary = "prescribe medicine and examinations to a patient")
     @Transactional

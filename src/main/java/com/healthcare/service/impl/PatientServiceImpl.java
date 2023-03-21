@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class PatientServiceImpl implements PatientService {
@@ -49,6 +50,14 @@ public class PatientServiceImpl implements PatientService {
             prescriptionRepository.save(prescription);
         return ResponseEntity.ok("Created Prescription successfully");
 
+    }
+
+    @Override
+    public ResponseEntity<?> patientList(String uuid) {
+        List<PatientDTO> patients;
+//        System.out.println(uuid);
+            patients = repository.findAllByHealthFacility_Uuid(UUID.fromString(uuid));
+        return ResponseEntity.ok(patients);
     }
 
 }
