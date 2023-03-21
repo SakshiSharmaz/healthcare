@@ -43,10 +43,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResponseEntity<?> login(User user) {
-        User dtUser;
-
         JSONObject response = new JSONObject();
         HttpHeaders responseHeaders = new HttpHeaders();
+        if(user.getPassword().trim().equals("") || (user.getEmail().trim().equals("") && user.getPhone().trim().equals("")) ){
+            response.put(ApiConstants.MESSAGE, "Invalid User ID or password");
+            return new ResponseEntity<>(response.toString(), responseHeaders, HttpStatus.UNAUTHORIZED);
+
+        }
+
+        User dtUser;
+
+
         if (user.getEmail() != null) {
             //login using email
             dtUser = repository.findFirstByEmail(user.getEmail());
