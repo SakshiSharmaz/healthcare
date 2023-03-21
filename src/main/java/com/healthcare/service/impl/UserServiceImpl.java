@@ -15,6 +15,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -76,8 +78,12 @@ public class UserServiceImpl implements UserService {
             }
         }
 
-
         response.put(ApiConstants.MESSAGE, "Invalid User ID or password");
         return new ResponseEntity<>(response.toString(), responseHeaders, HttpStatus.UNAUTHORIZED);
+    }
+
+    @Override
+    public ResponseEntity<?> getUserList(String userType, String healthFacilityId) {
+        return ResponseEntity.ok(repository.findByUserType(userType, UUID.fromString(healthFacilityId)));
     }
 }

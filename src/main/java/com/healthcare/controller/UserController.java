@@ -37,6 +37,19 @@ public class UserController {
 
     }
 
+
+    @PostMapping("/list/{userType}")
+    @Operation(summary = "Get list of specific Type of user")
+    @Transactional
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
+            @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
+            @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
+    public ResponseEntity<?> getUserListByTypeAndHealthFacility(@PathVariable String userType, @RequestParam String healthFacilityId) {
+
+        return userService.getUserList( userType, healthFacilityId);
+
+    }
+
     @PostMapping("/login")
     @Operation(summary = "Login ")
     @Transactional

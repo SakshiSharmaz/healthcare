@@ -8,4 +8,6 @@ public interface UserService {
     ResponseEntity<?> createHealthFacilityAdmin(User user);
 
     ResponseEntity<?> login(User user);
+
+    ResponseEntity<?> getUserList(String userType, String healthFacilityId);
 }
