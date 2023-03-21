@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
                 String jwt = tokenProvider.generateToken(authentication);
                 responseHeaders.set(ApiConstants.AUTHORIZATION, ApiConstants.BEARER + jwt);
                 response.put(ApiConstants.MESSAGE, ApiConstants.LOGIN_SUCCESSFUL);
-                return new ResponseEntity<>(user, responseHeaders, HttpStatus.OK);
+                return new ResponseEntity<>(dtUser, responseHeaders, HttpStatus.OK);
             }
         }
 
