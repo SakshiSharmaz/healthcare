@@ -1,11 +1,16 @@
 package com.healthcare.service.impl;
 
+import com.healthcare.dto.HFMinDto;
 import com.healthcare.model.HealthFacility;
 import com.healthcare.repository.DistrictRepository;
 import com.healthcare.repository.HealthFacilityRepository;
 import com.healthcare.service.FacilityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class HealthFacilityServiceImpl implements FacilityService {
@@ -46,6 +51,9 @@ public class HealthFacilityServiceImpl implements FacilityService {
 
     @Override
     public ResponseEntity<?> getHealthFacilityListWithNoAdmin() {
-        return ResponseEntity.ok(repository.getFacilitiesCompleteList());
+        List<Object[]> facilitiesCompleteListNoAdmin = repository.getFacilitiesCompleteListNoAdmin();
+        List<HFMinDto> list = new ArrayList<>();
+        facilitiesCompleteListNoAdmin.forEach(item -> list.add(new HFMinDto(UUID.fromString((String) item[0]), (String) item[1])));
+        return ResponseEntity.ok(list);
     }
 }
