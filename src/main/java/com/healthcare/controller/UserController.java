@@ -37,6 +37,18 @@ public class UserController {
 
     }
 
+    @PostMapping("/login")
+    @Operation(summary = "Login ")
+    @Transactional
+    @ApiResponses(value = {@ApiResponse(responseCode = "200", description = ""),
+            @ApiResponse(responseCode = "501", description = Constants.UNEXPECTED_ERROR),
+            @ApiResponse(responseCode = "401", description = Constants.UNAUTHORIZED)})
+    public ResponseEntity<?> login(@RequestBody User user) {
+
+        return userService.login(user);
+
+    }
+
 
 
 

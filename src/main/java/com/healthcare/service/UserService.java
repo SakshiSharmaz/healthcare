@@ -7,4 +7,5 @@ public interface UserService {
 
     ResponseEntity<?> createHealthFacilityAdmin(User user);
 
+    ResponseEntity<?> login(User user);
 }
