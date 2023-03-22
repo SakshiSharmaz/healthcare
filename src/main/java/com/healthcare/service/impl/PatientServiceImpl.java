@@ -1,6 +1,7 @@
 package com.healthcare.service.impl;
 
 import com.healthcare.dto.PatientDTO;
+import com.healthcare.dto.PrescriptionDto;
 import com.healthcare.model.Patient;
 import com.healthcare.model.Prescription;
 import com.healthcare.model.User;
@@ -57,6 +58,14 @@ public class PatientServiceImpl implements PatientService {
         List<PatientDTO> patients;
 //        System.out.println(uuid);
             patients = repository.findAllByHealthFacility_Uuid(UUID.fromString(uuid));
+        return ResponseEntity.ok(patients);
+    }
+
+    @Override
+    public ResponseEntity<?> prescriptionList(String patientId) {
+        List<PrescriptionDto> patients;
+//        System.out.println(uuid);
+        patients = prescriptionRepository.findAllByPatientId(UUID.fromString(patientId));
         return ResponseEntity.ok(patients);
     }
 
