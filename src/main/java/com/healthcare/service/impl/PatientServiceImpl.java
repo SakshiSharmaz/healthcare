@@ -48,6 +48,7 @@ public class PatientServiceImpl implements PatientService {
 
     @Override
     public ResponseEntity<?> prescribe(Prescription prescription) {
+        prescription.setCreatedAt(System.currentTimeMillis());
             prescriptionRepository.save(prescription);
         return ResponseEntity.ok("Created Prescription successfully");
 

@@ -13,6 +13,6 @@ import java.util.UUID;
 @Repository
 public interface PrescriptionRepository extends JpaRepository<Prescription, UUID> {
 
-    @Query("select new com.healthcare.dto.PrescriptionDto(p.uuid, p.advice, p.summary) from Prescription p where p.patient.uuid=?1")
+    @Query("select new com.healthcare.dto.PrescriptionDto(p.uuid, p.advice, p.summary,p.createdAt) from Prescription p where p.patient.uuid=?1")
     List<PrescriptionDto> findAllByPatientId(UUID fromString);
 }

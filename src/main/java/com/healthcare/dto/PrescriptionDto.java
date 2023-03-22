@@ -15,5 +15,6 @@ public class PrescriptionDto {
     UUID uuid;
     String advice;
     String summary;
+    long createdAt;
 
 }
